@@ -1,0 +1,938 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>CA Solar PPA FAQ • Rep Playbook</title>
+  <meta name="theme-color" content="#0b1017" />
+
+  <style>
+    :root{
+      --navy:#0b1017;
+      --navy2:#06122a;
+      --card:#0f1724;
+      --card2:#0c1420;
+
+      --gold:#FBC909;
+      --teal:#3AADBB;
+      --lime:#86f7a6;
+
+      --text:rgba(255,255,255,.94);
+      --muted:rgba(255,255,255,.72);
+      --muted2:rgba(255,255,255,.56);
+
+      --danger:#ff4d4d;
+      --ok:#34c759;
+
+      --r:18px;
+      --r2:24px;
+      --shadow: 0 18px 70px rgba(0,0,0,.45);
+      --stroke: rgba(255,255,255,.10);
+
+      --safeT: env(safe-area-inset-top);
+      --safeB: env(safe-area-inset-bottom);
+      --safeL: env(safe-area-inset-left);
+      --safeR: env(safe-area-inset-right);
+
+      --grad: linear-gradient(135deg, var(--gold), var(--teal));
+      --grad2: linear-gradient(135deg, rgba(251,201,9,.20), rgba(58,173,187,.18));
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background:
+        radial-gradient(1100px 700px at 20% -10%, rgba(251,201,9,.18), transparent 60%),
+        radial-gradient(900px 600px at 110% 10%, rgba(58,173,187,.18), transparent 55%),
+        linear-gradient(180deg, var(--navy), var(--navy2));
+      color:var(--text);
+      padding: calc(14px + var(--safeT)) calc(14px + var(--safeR)) calc(18px + var(--safeB)) calc(14px + var(--safeL));
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ max-width: 980px; margin:0 auto; }
+
+    /* Header */
+    header{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:14px 14px;
+      border:1px solid var(--stroke);
+      border-radius: var(--r2);
+      background: rgba(15,23,36,.55);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+    }
+    .logo{
+      width:44px; height:44px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.06);
+      border:1px solid var(--stroke);
+      display:grid; place-items:center;
+      overflow:hidden;
+      flex:0 0 auto;
+    }
+    .logo img{ width:100%; height:100%; object-fit:cover; }
+    .hgroup{ flex:1; min-width:0; }
+    h1{
+      margin:0;
+      font-size: 18px;
+      letter-spacing: .2px;
+      line-height: 1.2;
+    }
+    .sub{
+      margin:6px 0 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+    .badge{
+      flex:0 0 auto;
+      font-size:12px;
+      padding:8px 10px;
+      border-radius: 999px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .badge b{
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip:text;
+      color: transparent;
+    }
+
+    /* Controls */
+    .controls{
+      margin-top: 14px;
+      display:grid;
+      gap:10px;
+    }
+    .search{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      padding: 12px 12px;
+      border-radius: var(--r);
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.06);
+    }
+    .search input{
+      width:100%;
+      background: transparent;
+      border:none;
+      outline:none;
+      color: var(--text);
+      font-size: 15px;
+    }
+    .search .k{
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border:1px solid var(--stroke);
+      background: rgba(0,0,0,.20);
+      color: var(--muted2);
+      white-space:nowrap;
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .chip{
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      padding: 9px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      cursor:pointer;
+      user-select:none;
+      transition: transform .08s ease, background .2s ease, border-color .2s ease;
+    }
+    .chip:active{ transform: scale(.98); }
+    .chip.on{
+      color: rgba(255,255,255,.96);
+      border-color: rgba(251,201,9,.35);
+      background: var(--grad2);
+    }
+
+    /* Layout */
+    .grid{
+      margin-top: 14px;
+      display:grid;
+      gap: 12px;
+      grid-template-columns: 1fr;
+    }
+
+    .panel{
+      border:1px solid var(--stroke);
+      border-radius: var(--r2);
+      background: rgba(15,23,36,.55);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .panel .phead{
+      padding: 14px 14px 10px 14px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .ptitle{
+      margin:0;
+      font-size: 14px;
+      letter-spacing: .2px;
+      color: rgba(255,255,255,.90);
+    }
+    .pmeta{
+      margin:6px 0 0 0;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+    .pbody{ padding: 10px 14px 14px 14px; }
+
+    .callout{
+      border-radius: var(--r);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      padding: 12px;
+    }
+    .callout .row{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+    .dot{
+      width:10px; height:10px; margin-top:5px;
+      border-radius: 999px;
+      background: var(--gold);
+      box-shadow: 0 0 0 4px rgba(251,201,9,.14);
+      flex:0 0 auto;
+    }
+    .callout b{ color: rgba(255,255,255,.92); }
+    .callout p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    /* FAQ */
+    .faq{ padding: 6px 10px 14px 10px; }
+    .item{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: var(--r);
+      margin-top:10px;
+      overflow:hidden;
+    }
+    .q{
+      width:100%;
+      text-align:left;
+      padding: 12px 12px;
+      cursor:pointer;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:flex-start;
+      background: transparent;
+      border:none;
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.25;
+    }
+    .q small{
+      display:block;
+      margin-top:6px;
+      color: var(--muted2);
+      font-size: 12px;
+      line-height:1.35;
+    }
+    .caret{
+      flex:0 0 auto;
+      width: 34px; height: 34px;
+      border-radius: 999px;
+      display:grid; place-items:center;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
+      color: rgba(255,255,255,.78);
+      transition: transform .2s ease;
+      margin-top: 2px;
+    }
+    .item.open .caret{ transform: rotate(180deg); }
+
+    .a{
+      display:none;
+      padding: 0 12px 12px 12px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .item.open .a{ display:block; }
+
+    .pillrow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin: 10px 0 8px 0;
+    }
+    .pill{
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
+      color: var(--muted2);
+    }
+    .pill.good{ border-color: rgba(52,199,89,.28); color: rgba(200,255,220,.88); }
+    .pill.warn{ border-color: rgba(251,201,9,.30); color: rgba(255,240,190,.92); }
+    .pill.bad{ border-color: rgba(255,77,77,.35); color: rgba(255,200,200,.92); }
+
+    .block{
+      margin-top:10px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      padding: 10px;
+    }
+    .label{
+      font-size: 11px;
+      letter-spacing: .3px;
+      text-transform: uppercase;
+      color: var(--muted2);
+      margin: 0 0 6px 0;
+    }
+    .block p{ margin:0; }
+
+    .say{
+      border-left: 3px solid rgba(58,173,187,.65);
+      padding-left: 10px;
+      color: rgba(225,250,255,.86);
+    }
+
+    footer{
+      margin-top: 14px;
+      color: var(--muted2);
+      font-size: 12px;
+      line-height: 1.45;
+      padding: 10px 2px;
+      opacity: .95;
+    }
+
+    .btnRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 10px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.90);
+      font-size: 13px;
+      cursor:pointer;
+      user-select:none;
+    }
+    .btn.primary{
+      border-color: rgba(251,201,9,.28);
+      background: var(--grad2);
+    }
+
+    @media (min-width: 920px){
+      .controls{ grid-template-columns: 1.2fr .8fr; align-items:start; }
+      .chips{ justify-content:flex-end; }
+    }
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="logo" title="L.O.S.">
+      <!-- Replace los-logo.png with your logo filename -->
+      <img src="los-logo.png" alt="LOS Logo" onerror="this.style.display='none'; this.parentElement.textContent='LOS'; this.parentElement.style.color='rgba(255,255,255,.85)'; this.parentElement.style.fontWeight='700';" />
+    </div>
+
+    <div class="hgroup">
+      <h1>California Solar PPA FAQ • Rep Playbook</h1>
+      <p class="sub">
+        Built for quick, confident explanations: <b>what it means</b>, <b>why it matters</b>, and <b>what to verify</b> in the agreement.
+      </p>
+    </div>
+
+    <div class="badge"><b>Dark</b> • LOS Theme</div>
+  </header>
+
+  <div class="controls">
+    <div class="search">
+      <span style="opacity:.85">🔎</span>
+      <input id="search" placeholder="Search FAQs (ex: escalator, buyout, roof, selling home, warranty, NEM 3.0)"/>
+      <span class="k">Tip: type “sell”</span>
+    </div>
+
+    <div class="chips" id="chips">
+      <div class="chip on" data-tag="all">All</div>
+      <div class="chip" data-tag="basics">Basics</div>
+      <div class="chip" data-tag="money">Price & Escalator</div>
+      <div class="chip" data-tag="contract">Contract Terms</div>
+      <div class="chip" data-tag="home">Home Sale & Roof</div>
+      <div class="chip" data-tag="ops">Maintenance</div>
+      <div class="chip" data-tag="nem">NEM 3.0 / Battery</div>
+      <div class="chip" data-tag="trust">Trust & Safety</div>
+    </div>
+  </div>
+
+  <div class="grid">
+
+    <section class="panel">
+      <div class="phead">
+        <div>
+          <h2 class="ptitle">How to use this with a homeowner</h2>
+          <p class="pmeta">3 steps your rep can follow without sounding “salesy.”</p>
+        </div>
+      </div>
+      <div class="pbody">
+        <div class="callout">
+          <div class="row">
+            <div class="dot"></div>
+            <div>
+              <p><b>1) Define it in one sentence.</b> “A PPA means you buy the <u>power</u> the panels make at an agreed rate; the solar company owns/maintains the system.”</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="height:10px"></div>
+
+        <div class="callout">
+          <div class="row">
+            <div class="dot" style="background:var(--teal); box-shadow:0 0 0 4px rgba(58,173,187,.14)"></div>
+            <div>
+              <p><b>2) Confirm the 3 “big rocks.”</b> Price per kWh (and escalator), term/buyout options, and what happens when they sell the home.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="height:10px"></div>
+
+        <div class="callout">
+          <div class="row">
+            <div class="dot" style="background:var(--lime); box-shadow:0 0 0 4px rgba(134,247,166,.12)"></div>
+            <div>
+              <p><b>3) Verify in writing.</b> Everything that affects money must be in the agreement: escalator, production guarantee language, fees, transfer steps, and buyout schedule.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="btnRow">
+          <button class="btn primary" id="expandAll">Expand all</button>
+          <button class="btn" id="collapseAll">Collapse</button>
+          <button class="btn" id="clearSearch">Clear search</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="phead">
+        <div>
+          <h2 class="ptitle">Red flags (quick filter)</h2>
+          <p class="pmeta">These are the ones that create complaints, cancellations, and bad reviews.</p>
+        </div>
+      </div>
+      <div class="pbody">
+        <div class="pillrow">
+          <span class="pill bad">No written escalator details</span>
+          <span class="pill bad">“Free solar” language</span>
+          <span class="pill warn">No clear transfer process</span>
+          <span class="pill warn">No clarity on roof work</span>
+          <span class="pill warn">Fees not disclosed</span>
+          <span class="pill bad">Verbal promises only</span>
+        </div>
+        <div class="callout">
+          <p>
+            Your job is to be the “clarity rep.” If a homeowner feels confused, they assume they’re being tricked.
+            Clear, slow, and contract-backed wins.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="phead">
+        <div>
+          <h2 class="ptitle">FAQs (tap to expand)</h2>
+          <p class="pmeta">Each includes: <b>Client answer</b> → <b>Why it matters</b> → <b>Verify</b>.</p>
+        </div>
+        <div class="badge" id="countBadge">0 shown</div>
+      </div>
+
+      <div class="faq" id="faq">
+
+        <!-- BASICS -->
+        <div class="item" data-tags="basics contract">
+          <button class="q">
+            <div>
+              What is a PPA (Power Purchase Agreement) in simple terms?
+              <small>Short definition you can say at the door or at the table.</small>
+            </div>
+            <div class="caret">⌄</div>
+          </button>
+          <div class="a">
+            <div class="pillrow">
+              <span class="pill good">Client clarity</span>
+              <span class="pill warn">Avoid “ownership confusion”</span>
+            </div>
+
+            <div class="block">
+              <div class="label">Client answer</div>
+              <p class="say">“You’re not buying panels — you’re buying the electricity they produce at a set rate. The solar company owns the equipment and handles monitoring/repairs.”</p>
+            </div>
+
+            <div class="block">
+              <div class="label">Why this matters (rep reason)</div>
+              <p>Most objections come from misunderstandings: “Do I own it?” “Is there a loan?” Define it cleanly so they can compare options honestly.</p>
+            </div>
+
+            <div class="block">
+              <div class="label">Verify in the agreement</div>
+              <p>Who owns the system, what you pay for (kWh produced), and what’s included (monitoring, maintenance, insurance responsibilities).</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="item" data-tags="basics money">
+          <button class="q">
+            <div>
+              How do I pay on a PPA — is it a fixed bill?
+              <small>Common confusion: “Is it like a loan payment?”</small>
+            </div>
+            <div class="caret">⌄</div>
+          </button>
+          <div class="a">
+            <div class="block">
+              <div class="label">Client answer</div>
+              <p class="say">“You pay for the energy the system produces (kWh) at the PPA rate. Some months can be lower/higher depending on production and season.”</p>
+            </div>
+            <div class="block">
+              <div class="label">Why this matters</div>
+              <p>If they expect a perfectly fixed payment and summer production swings, they feel “baited.” Set expectations: seasonal production changes are normal.</p>
+            </div>
+            <div class="block">
+              <div class="label">Verify</div>
+              <p>Billing method (kWh produced), true-up/annual reconciliation language (if any), and whether there’s a minimum monthly charge.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MONEY / ESCALATOR -->
+        <div class="item" data-tags="money contract">
+          <button class="q">
+            <div>
+              What is an escalator — and should I choose 0% or an escalator?
+              <small>This is one of the most important “money questions.”</small>
+            </div>
+            <div class="caret">⌄</div>
+          </button>
+          <div class="a">
+            <div class="pillrow">
+              <span class="pill warn">Big decision</span>
+              <span class="pill warn">Long-term math</span>
+            </div>
+
+            <div class="block">
+              <div class="label">Client answer</div>
+              <p class="say">“An escalator is the annual increase on your solar kWh price (example: 2.9%/yr). A 0% option costs more today but stays flatter long-term.”</p>
+            </div>
+
+            <div class="block">
+              <div class="label">Why this matters</div>
+              <p>Homeowners don’t care about “good or bad,” they care about: (1) savings now, (2) savings later, (3) home sale flexibility. Escalator affects all three.</p>
+            </div>
+
+            <div class="block">
+              <div class="label">Verify</div>
+              <p>Exact escalator %, when it starts, whether it applies to all kWh, and any caps. Must be written clearly.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="item" data-tags="money">
+          <button class="q">
+            <div>
+              How do I compare a PPA price to Edison’s rate?
+              <small>Keep it simple: compare price per kWh and expected usage coverage.</small>
+            </div>
+            <div class="caret">⌄</div>
+          </button>
+          <div class="a">
+            <div class="block">
+              <div class="label">Client answer</div>
+              <p class="say">“We compare your effective utility cost per kWh vs the PPA kWh price. If the PPA is lower and sized right, you save — especially during peak pricing.”</p>
+            </div>
+            <div class="block">
+              <div class="label">Why this matters</div>
+              <p>Clients get lost in monthly totals. Bring them back to: “What do you pay per kWh today, and what will you pay per kWh on solar?”</p>
+            </div>
+            <div class="block">
+              <div class="label">Verify</div>
+              <p>PPA kWh rate (starting price), escalator, and what utility charges remain (minimum charges, non-bypassable charges, etc.).</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTRACT -->
+        <div class="item" data-tags="contract trust">
+          <button class="q">
+            <div>
+              What are the typical term lengths and what happens at the end?
+              <small>20–25 years is common. End-of-term options must be clear.</small>
+            </div>
+            <div class="caret">⌄</div>
+          </button>
+          <div class="a">
+            <div class="block">
+              <div class="label">Client answer</div>
+              <p class="say">“Most PPAs are long-term. At the end, there’s usually an option to renew, remove the system, or buy it — depending on the agreement.”</p>
+            </div>
+            <div class="block">
+              <div class="label">Why this matters</div>
+              <p>If end-of-term isn’t clear, they fear being “stuck forever.” Clarity reduces cancellations.</p>
+            </div>
+            <div class="block">
+              <div class="label">Verify</div>
+              <p>Term length, renewal language, removal responsibilities, and end-of-term buyout options (if any).</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="item" data-tags="contract money home">
+          <button class="q">
+            <div>
+              Is there a buyout option? How is the buyout price determined?
+              <small>Homeowners ask this when they might sell later.</small>
+            </div>
+            <div class="caret">⌄</div>
+          </button>
+          <div class="a">
+            <div class="block">
+              <div class="label">Client answer</div>
+              <p class="say">“Many PPAs include a buyout option at certain years. The price is typically based on a schedule or fair market value terms — it must be written.”</p>
+            </div>
+            <div class="block">
+              <div class="label">Why this matters</div>
+              <p>Buyout clarity = homeowner feels in control. No clarity = “I can’t ever get out.”</p>
+            </div>
+            <div class="block">
+              <div class="label">Verify</div>
+              <p>Buyout timing windows, method (schedule vs FMV), and any admin/transaction fees.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- HOME SALE / ROOF -->
+        <div class="item" data-tags="home contract trust">
+          <button class="q">
+            <div>
+              What happens if I sell my home?
+              <small>Top fear: “This will ruin escrow.”</small>
+            </div>
+            <div class="caret">⌄</div>
+          </button>
+          <div class="a">
+            <div class="pillrow">
+              <span class="pill warn">Most common anxiety</span>
+              <span class="pill good">Solve with process</span>
+            </div>
+            <div class="block">
+              <div class="label">Client answer</div>
+              <p class="say">“You typically transfer the agreement to the buyer (subject to approval). Some homeowners choose to buy it out instead — depends on the contract.”</p>
+            </div>
+            <div class="block">
+              <div class="label">Why this matters</div>
+              <p>They’re imagining the worst. Your job is to replace fear with a step-by-step process (transfer vs buyout) and set expectations early.</p>
+            </div>
+            <div class="block">
+              <div class="label">Verify</div>
+              <p>Transfer requirements, buyer qualification, timelines, any transfer fees, and what happens if a buyer refuses.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="item" data-tags="home ops">
+          <button class="q">
+            <div>
+              Who pays if the roof needs repairs — and what if I need a reroof?
+              <small>Roof work is where deals go sideways if unclear.</small>
+            </div>
+            <div class="caret">⌄</div>
+          </button>
+          <div class="a">
+            <div class="block">
+              <div class="label">Client answer</div>
+              <p class="say">“It depends. Some roof issues are homeowner responsibility. If panels must be removed/reinstalled, the agreement should say who pays and how it’s scheduled.”</p>
+            </div>
+            <div class="block">
+              <div class="label">Why this matters</div>
+              <p>Roof questions are trust tests. If you’re vague, they assume hidden costs.</p>
+            </div>
+            <div class="block">
+              <div class="label">Verify</div>
+              <p>Roof warranty language, panel remove/reinstall terms, and any fees for truck rolls or reinstallation.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- OPS / MAINTENANCE -->
+        <div class="item" data-tags="ops basics">
+          <button class="q">
+            <div>
+              Who monitors and fixes the system if something breaks?
+              <small>This is a big advantage of PPA if explained correctly.</small>
+            </div>
+            <div class="caret">⌄</div>
+          </button>
+          <div class="a">
+            <div class="block">
+              <div class="label">Client answer</div>
+              <p class="say">“Typically the provider monitors production and covers repairs/maintenance. If production drops, they’re alerted and schedule service.”</p>
+            </div>
+            <div class="block">
+              <div class="label">Why this matters</div>
+              <p>Homeowners don’t want to “own a science project.” Reinforce that service is handled, then confirm what’s excluded.</p>
+            </div>
+            <div class="block">
+              <div class="label">Verify</div>
+              <p>Monitoring included, response times (if stated), exclusions (damage, roof leaks, homeowner-caused issues), and how to request service.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="item" data-tags="ops money">
+          <button class="q">
+            <div>
+              Is there a production guarantee? What if it under-produces?
+              <small>Don’t promise “guarantees” unless it’s written.</small>
+            </div>
+            <div class="caret">⌄</div>
+          </button>
+          <div class="a">
+            <div class="block">
+              <div class="label">Client answer</div>
+              <p class="say">“Some agreements include minimum production expectations or remedies. We’ll show you exactly what the contract says about under-production.”</p>
+            </div>
+            <div class="block">
+              <div class="label">Why this matters</div>
+              <p>Clients fear paying for “phantom savings.” This question shows you’re transparent and contract-driven.</p>
+            </div>
+            <div class="block">
+              <div class="label">Verify</div>
+              <p>Production guarantee terms (if any), measurement method, remedy (credit/payment), and exclusions (shade growth, weather anomalies).</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- NEM / BATTERY -->
+        <div class="item" data-tags="nem money">
+          <button class="q">
+            <div>
+              What is NEM 3.0 (Net Billing) and why do batteries matter more now?
+              <small>Simple explanation: exporting midday pays less; storing for evening is more valuable.</small>
+            </div>
+            <div class="caret">⌄</div>
+          </button>
+          <div class="a">
+            <div class="block">
+              <div class="label">Client answer</div>
+              <p class="say">“Under NEM 3.0, the credit for exporting extra solar is generally much lower than it used to be, so batteries help you use more of your own solar during peak hours.”</p>
+            </div>
+            <div class="block">
+              <div class="label">Why this matters</div>
+              <p>Clients ask “Why battery?” This is the cleanest reason: control your power during expensive hours instead of selling it cheap midday.</p>
+            </div>
+            <div class="block">
+              <div class="label">Verify</div>
+              <p>Whether the proposal includes a battery, how it’s dispatched (self-consumption vs backup), and whether backup is included or optional.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="item" data-tags="nem ops">
+          <button class="q">
+            <div>
+              If the power goes out, will solar still work?
+              <small>Common misconception: solar alone powers the home during outages.</small>
+            </div>
+            <div class="caret">⌄</div>
+          </button>
+          <div class="a">
+            <div class="block">
+              <div class="label">Client answer</div>
+              <p class="say">“Most grid-tied solar shuts off during an outage for safety. With a battery (and proper backup setup), you can keep selected circuits running.”</p>
+            </div>
+            <div class="block">
+              <div class="label">Why this matters</div>
+              <p>This is where trust is won or lost. Set the correct expectation early.</p>
+            </div>
+            <div class="block">
+              <div class="label">Verify</div>
+              <p>Whether backup is included, what loads are backed up, and whether a backup subpanel is part of the scope.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TRUST / SAFETY -->
+        <div class="item" data-tags="trust contract">
+          <button class="q">
+            <div>
+              What should I verify about licensing, salespeople, and subcontractors?
+              <small>California consumer-protection question set.</small>
+            </div>
+            <div class="caret">⌄</div>
+          </button>
+          <div class="a">
+            <div class="block">
+              <div class="label">Client answer</div>
+              <p class="say">“You should verify the contractor license number and ask if any part is subcontracted. Everything should match the company installing and servicing your system.”</p>
+            </div>
+            <div class="block">
+              <div class="label">Why this matters</div>
+              <p>This protects the homeowner and protects you. It reduces scam vibes and builds confidence.</p>
+            </div>
+            <div class="block">
+              <div class="label">Verify</div>
+              <p>CSLB license, salesperson relationship to company, and subcontractor details if used.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="item" data-tags="trust money contract">
+          <button class="q">
+            <div>
+              Are there fees, liens, or penalties I should worry about?
+              <small>Make the “hidden stuff” visible up front.</small>
+            </div>
+            <div class="caret">⌄</div>
+          </button>
+          <div class="a">
+            <div class="block">
+              <div class="label">Client answer</div>
+              <p class="say">“We’ll review any fees in writing: late fees, transfer fees, buyout admin fees, and any early termination terms.”</p>
+            </div>
+            <div class="block">
+              <div class="label">Why this matters</div>
+              <p>Clients assume the worst. If you proactively bring it up, you become the trusted guide instead of a salesperson.</p>
+            </div>
+            <div class="block">
+              <div class="label">Verify</div>
+              <p>All fees/penalties section, early termination language, and any filing language stated in the agreement.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <b>Rep note:</b> Keep your explanations contract-based and homeowner-first. California has a consumer guide that encourages homeowners to verify licensing, terms, and key contract details—use that as your “why we review this.”<br/>
+    <span style="opacity:.85">LOS • Dark Theme • Built for iPhone, iPad, and laptop.</span>
+  </footer>
+
+</div>
+
+<script>
+  const $ = (s)=>document.querySelector(s);
+  const $$ = (s)=>Array.from(document.querySelectorAll(s));
+
+  const faq = $("#faq");
+  const items = $$(".item");
+  const search = $("#search");
+  const chips = $$("#chips .chip");
+  const countBadge = $("#countBadge");
+
+  let activeTag = "all";
+
+  function setCount(){
+    const shown = items.filter(i => i.style.display !== "none").length;
+    countBadge.textContent = `${shown} shown`;
+  }
+
+  function matchItem(item){
+    const qText = item.querySelector(".q").innerText.toLowerCase();
+    const aText = item.querySelector(".a").innerText.toLowerCase();
+    const hay = (qText + " " + aText);
+    const term = (search.value || "").trim().toLowerCase();
+
+    const tags = (item.getAttribute("data-tags") || "").split(/\s+/).filter(Boolean);
+    const tagOk = (activeTag === "all") ? true : tags.includes(activeTag);
+
+    const termOk = term ? hay.includes(term) : true;
+
+    return tagOk && termOk;
+  }
+
+  function applyFilters(){
+    items.forEach(item=>{
+      item.style.display = matchItem(item) ? "" : "none";
+    });
+    setCount();
+  }
+
+  // Accordion behavior
+  items.forEach(item=>{
+    const btn = item.querySelector(".q");
+    btn.addEventListener("click", ()=>{
+      item.classList.toggle("open");
+    });
+  });
+
+  // Search
+  search.addEventListener("input", applyFilters);
+
+  // Chips
+  chips.forEach(ch=>{
+    ch.addEventListener("click", ()=>{
+      chips.forEach(x=>x.classList.remove("on"));
+      ch.classList.add("on");
+      activeTag = ch.getAttribute("data-tag");
+      applyFilters();
+    });
+  });
+
+  // Buttons
+  $("#expandAll").addEventListener("click", ()=>{
+    items.forEach(i=>{
+      if(i.style.display !== "none") i.classList.add("open");
+    });
+  });
+
+  $("#collapseAll").addEventListener("click", ()=>{
+    items.forEach(i=>i.classList.remove("open"));
+  });
+
+  $("#clearSearch").addEventListener("click", ()=>{
+    search.value = "";
+    applyFilters();
+  });
+
+  // Initial
+  applyFilters();
+</script>
+</body>
+</html>
