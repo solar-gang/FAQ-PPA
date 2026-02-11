@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-  <title>CA Solar PPA • Learn Mode</title>
+  <title>Door PPA FAQ • Learn Mode</title>
   <meta name="theme-color" content="#0b1017"/>
 
   <style>
@@ -13,7 +13,6 @@
 
       --gold:#FBC909;
       --teal:#3AADBB;
-      --lime:#86f7a6;
 
       --text:rgba(255,255,255,.94);
       --muted:rgba(255,255,255,.70);
@@ -31,8 +30,6 @@
       --safeR: env(safe-area-inset-right);
 
       --grad: linear-gradient(135deg, rgba(251,201,9,.22), rgba(58,173,187,.18));
-      --glass: rgba(15,23,36,.62);
-      --glass2: rgba(0,0,0,.18);
     }
 
     *{ box-sizing:border-box; }
@@ -62,12 +59,7 @@
       backdrop-filter: blur(10px);
       box-shadow: var(--shadow);
     }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      min-width:0;
-    }
+    .brand{ display:flex; align-items:center; gap:10px; min-width:0; }
     .logo{
       width:42px; height:42px;
       border-radius: 14px;
@@ -97,12 +89,7 @@
       text-overflow:ellipsis;
     }
 
-    .right{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      flex:0 0 auto;
-    }
+    .right{ display:flex; align-items:center; gap:8px; flex:0 0 auto; }
     .pill{
       font-size:12px;
       padding: 8px 10px;
@@ -161,17 +148,8 @@
       color: var(--muted);
       font-size: 13px;
     }
-    .progress{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      white-space:nowrap;
-    }
-    .dots{
-      display:flex;
-      gap:6px;
-      align-items:center;
-    }
+    .progress{ display:flex; align-items:center; gap:8px; white-space:nowrap; }
+    .dots{ display:flex; gap:6px; align-items:center; }
     .dot{
       width:7px;height:7px;border-radius:999px;
       background: rgba(255,255,255,.18);
@@ -219,10 +197,7 @@
       color: rgba(255,255,255,.94);
     }
 
-    .actions{
-      display:grid;
-      gap: 10px;
-    }
+    .actions{ display:grid; gap: 10px; }
     .btn{
       width:100%;
       padding: 16px 14px;
@@ -239,17 +214,12 @@
       gap:10px;
     }
     .btn:active{ transform: scale(.99); }
-    .btn .hint{
-      font-size: 13px;
-      color: var(--muted2);
-    }
+    .btn .hint{ font-size: 13px; color: var(--muted2); }
     .btn.teal{
       border-color: rgba(58,173,187,.22);
       background: linear-gradient(135deg, rgba(58,173,187,.18), rgba(58,173,187,.06));
     }
-    .btn.gray{
-      background: rgba(0,0,0,.18);
-    }
+    .btn.gray{ background: rgba(0,0,0,.18); }
 
     .nav{
       display:flex;
@@ -279,10 +249,7 @@
       color: rgba(255,255,255,.96);
       font-weight: 650;
     }
-    .navBtn:disabled{
-      opacity: .45;
-      cursor:not-allowed;
-    }
+    .navBtn:disabled{ opacity: .45; cursor:not-allowed; }
 
     .footerHint{
       text-align:center;
@@ -326,10 +293,7 @@
       transition: transform .18s ease, opacity .18s ease;
     }
     .sheetBack.show{ display:flex; }
-    .sheetBack.show .sheet{
-      transform: translateY(0);
-      opacity: 1;
-    }
+    .sheetBack.show .sheet{ transform: translateY(0); opacity: 1; }
     .sheetHead{
       padding: 14px 14px 10px 14px;
       display:flex;
@@ -338,11 +302,7 @@
       gap:12px;
       border-bottom:1px solid rgba(255,255,255,.10);
     }
-    .sheetTitle{
-      margin:0;
-      font-size: 16px;
-      letter-spacing:.2px;
-    }
+    .sheetTitle{ margin:0; font-size: 16px; letter-spacing:.2px; }
     .sheetClose{
       width:40px;height:40px;
       border-radius: 14px;
@@ -360,11 +320,7 @@
       line-height: 1.55;
       font-size: 16px;
     }
-    .bullets{
-      margin: 10px 0 0 0;
-      padding-left: 18px;
-      color: rgba(255,255,255,.84);
-    }
+    .bullets{ margin: 10px 0 0 0; padding-left: 18px; color: rgba(255,255,255,.84); }
     .bullets li{ margin: 8px 0; }
     .tagRow{
       padding: 10px 14px 14px 14px;
@@ -402,13 +358,13 @@
           onerror="this.style.display='none'; this.parentElement.textContent='LOS'; this.parentElement.style.fontWeight='800'; this.parentElement.style.color='rgba(255,255,255,.9)';">
       </div>
       <div class="titleWrap">
-        <p class="appTitle">CA Solar PPA • Learn Mode</p>
-        <p class="appSub">Swipe to learn • Tap to reveal why/verify</p>
+        <p class="appTitle">Door PPA FAQ • Learn Mode</p>
+        <p class="appSub">Swipe to learn • Built for reps knocking doors</p>
       </div>
     </div>
 
     <div class="right">
-      <div class="pill"><b>Apple</b> style</div>
+      <div class="pill"><b>Apple</b> learn</div>
       <button class="iconBtn" id="helpBtn" title="Help">?</button>
     </div>
   </header>
@@ -416,7 +372,7 @@
   <section class="stage">
     <div class="card" id="card"></div>
     <div class="footerHint">
-      Swipe <span class="kbd">←</span> <span class="kbd">→</span> to move • Tap “Why this works” + “Verify in contract” when needed.
+      Swipe <span class="kbd">←</span> <span class="kbd">→</span> • Tap “Verify in contract” when the homeowner asks “what if…”
     </div>
   </section>
 </div>
@@ -432,7 +388,7 @@
       <button class="sheetClose" id="sheetClose" aria-label="Close">✕</button>
     </div>
     <div class="sheetBody" id="sheetBody"></div>
-    <div class="tagRow" id="sheetTagRow">
+    <div class="tagRow">
       <span id="sheetTagLeft"></span>
       <span id="sheetTagRight"></span>
     </div>
@@ -441,205 +397,154 @@
 
 <script>
 /* =========================
-   Customer-Concern Learn Deck
+   Door-Knock Customer Concerns (PPA Program)
+   - No loan / no debt framing
+   - 25-year bumper-to-bumper style coverage (verify in contract)
+   - Transfer reassurance (verify in contract)
+   - Escalator moved out (not common door question)
    ========================= */
 const DECK = [
   {
-    tag: "Start Here",
-    q: "Is this a loan? Am I buying the panels?",
-    say: "No loan.\nWith a PPA, you buy the power the system produces.\nThe provider owns the equipment.",
-    why: "This removes the #1 fear (hidden loan / ownership confusion) and builds instant trust.",
+    tag: "30-Second Clarity",
+    q: "Is this a loan? Am I taking on debt?",
+    say: "No loan.\nNo new debt.\nIt’s a power agreement—you pay for the electricity the system produces.",
+    why: "This is the fastest way to kill the ‘hidden loan’ fear and keep the conversation calm.",
     verify: [
-      "Ownership language (provider owns system)",
-      "You pay per kWh produced (not a loan payment)",
-      "Term length + billing method"
+      "Agreement type is PPA (not a loan)",
+      "No financed loan payment language",
+      "Billing is based on kWh produced"
     ]
   },
   {
-    tag: "Price",
-    q: "What am I paying for—panels or electricity?",
-    say: "You’re paying for electricity (kWh) the system makes.\nNot the panels themselves.",
-    why: "If they think they’re “financing panels,” everything else sounds like a scam. Keep it simple.",
+    tag: "Trust",
+    q: "What’s the catch? Is this a scam?",
+    say: "Totally fair question.\nWe don’t ask you to buy equipment—we cover the system and you buy the power.\nEverything we say must match the contract.",
+    why: "Acknowledging skepticism builds trust. ‘Contract-backed’ language makes you the safe rep.",
     verify: [
-      "PPA rate expressed as $/kWh",
-      "How production is measured (monitoring/metering)",
-      "Any minimum payment clause"
+      "Company name + provider identity on agreement",
+      "All pricing terms written (rate, fees if any)",
+      "Cancellation / rescission section"
+    ]
+  },
+  {
+    tag: "Warranty",
+    q: "What if the panels or battery break?",
+    say: "That’s the advantage here.\nThe system is covered long-term—panels, battery, and service.\nIf something fails, they fix it.",
+    why: "Homeowners don’t want to own maintenance. This turns fear into relief—without getting technical.",
+    verify: [
+      "Coverage term (25-year / long-term) stated in writing",
+      "What’s included: parts, labor, monitoring, service calls",
+      "Exclusions (damage, roof issues, misuse, etc.)"
     ]
   },
   {
     tag: "Bills",
-    q: "Do I still get an Edison bill?",
-    say: "Yes—most homes still have a small utility bill.\nSolar reduces what you buy from Edison.",
-    why: "If you promise “no utility bill,” you create disappointment and chargeback risk.",
+    q: "Do I still pay Edison?",
+    say: "Usually yes—but much less.\nYou’ll have a solar bill for the power produced, and often a smaller Edison bill for what you still use.",
+    why: "This prevents ‘you promised no Edison bill’ objections later and keeps expectations realistic.",
     verify: [
-      "Utility charges that remain (minimum charges, etc.)",
-      "How credits are handled (if applicable)",
-      "System size vs usage assumptions"
+      "Any utility charges that remain (minimum charges, etc.)",
+      "How the system is sized (offset assumptions)",
+      "How credits/true-up are described (if applicable)"
     ]
   },
   {
     tag: "Savings",
-    q: "How do I know I’m actually saving money?",
-    say: "We compare your current cost per kWh to the solar kWh price.\nIf solar is lower—and sized right—you save.",
-    why: "Monthly totals confuse people. kWh price is the cleanest apples-to-apples comparison.",
+    q: "How do I know I’m saving money?",
+    say: "We compare cost per kWh.\nIf your solar power rate is lower than Edison’s, that’s savings.\nWe size it so it makes sense day one.",
+    why: "People get overwhelmed by totals. kWh price is the cleanest comparison at the door.",
     verify: [
-      "Starting solar kWh price",
-      "Escalator (0% or %/yr) details",
-      "Estimated annual production vs annual usage"
+      "Starting kWh rate on the agreement",
+      "Any annual adjustment language (if any)",
+      "System size / expected production assumptions"
     ]
   },
   {
-    tag: "Escalator",
-    q: "What is an escalator—and why would I choose 0%?",
-    say: "An escalator is the yearly increase on the solar kWh price.\n0% costs more today but stays flatter long-term.",
-    why: "This is the biggest long-term money lever. Clarity prevents future regret and cancellations.",
+    tag: "Transfer",
+    q: "What if I sell my home?",
+    say: "You’re covered.\nThe agreement is designed to transfer to the new homeowner.\nWe make the transfer process simple and guaranteed.",
+    why: "Selling the home is a top fear. Reassurance keeps momentum—then you confirm with the contract.",
     verify: [
-      "Exact escalator % and start date",
-      "Whether it applies to all kWh",
-      "Any caps or special terms"
+      "Transfer clause (transfer allowed / process defined)",
+      "Any buyer requirements + timeline",
+      "Transfer fees (if any) and who pays"
     ]
   },
   {
-    tag: "Trust",
-    q: "Is this ‘free solar’ or ‘government program’?",
-    say: "No.\nThis is a private agreement with a solar company.\nWe review every term in writing.",
-    why: "Homeowners have heard scams. Being direct makes you the safe option.",
+    tag: "Credit",
+    q: "Does this hit my credit like a car loan?",
+    say: "It’s not a loan.\nApproval is usually about being a qualified homeowner and payment history—not adding debt.\nWe’ll confirm what’s required before anything moves forward.",
+    why: "People fear ‘another loan.’ This keeps it accurate while calming the credit anxiety.",
     verify: [
-      "Company name matches contract paperwork",
-      "All pricing terms written (rate + escalator)",
-      "Any fees/penalties disclosed in writing"
+      "Stated qualification requirements",
+      "Any credit-check language (if present)",
+      "Whether it reports as debt (if stated)"
     ]
   },
   {
-    tag: "Contract",
-    q: "How long am I locked in?",
-    say: "Most PPAs are long-term.\nWe’ll show the exact term and the options you have later.",
-    why: "People fear being trapped. You lower anxiety by pointing to clear options.",
+    tag: "Payments",
+    q: "Is there money out of pocket?",
+    say: "Typically no big down payment.\nIt’s set up to start saving without fronting cash.\nIf anything is required, we’ll show it in writing.",
+    why: "Door conversations die when people think they need cash. Keep it simple and contract-based.",
     verify: [
-      "Term length",
-      "Renewal language",
-      "End-of-term options (renew/buy/remove)"
-    ]
-  },
-  {
-    tag: "Buyout",
-    q: "Can I buy it out later? How does that work?",
-    say: "Often yes.\nSome contracts allow a buyout at specific years.\nWe’ll show the buyout rules in writing.",
-    why: "Buyout clarity gives control, especially for homeowners who may refinance or sell later.",
-    verify: [
-      "Buyout windows (when allowed)",
-      "Price method (schedule vs fair market value)",
-      "Admin/transaction fees (if any)"
-    ]
-  },
-  {
-    tag: "Home Sale",
-    q: "What if I sell my home—will this mess up escrow?",
-    say: "Usually it transfers to the buyer,\nor you may buy it out—depending on the contract.\nWe’ll walk the exact steps.",
-    why: "This is a top concern. Reassure with process: transfer OR buyout, not mystery.",
-    verify: [
-      "Transfer requirements + buyer approval",
-      "Transfer timeline + fees",
-      "What happens if buyer declines"
+      "Upfront payment requirement (if any)",
+      "Any deposit language",
+      "Fee schedule section"
     ]
   },
   {
     tag: "Roof",
-    q: "What if my roof leaks or needs replacement?",
-    say: "Roof issues are usually homeowner responsibility.\nIf panels must be removed/reinstalled, the contract says who pays and how.",
-    why: "Roof questions are a trust test. If you’re vague, they assume hidden costs.",
+    q: "What about my roof—damage or replacement later?",
+    say: "Good question.\nWe make sure the roof is solid before install.\nIf roof work happens later, the contract explains remove/reinstall responsibilities.",
+    why: "Roof is a trust test. This answer sounds responsible, not salesy.",
     verify: [
-      "Remove/reinstall responsibility + pricing",
-      "Roof leak responsibility language",
-      "Service request process + timing"
-    ]
-  },
-  {
-    tag: "Maintenance",
-    q: "If something breaks, who fixes it and who pays?",
-    say: "Typically the provider monitors and repairs the system.\nWe’ll confirm what’s covered and what’s excluded.",
-    why: "This is a core PPA advantage—less homeowner responsibility—IF explained clearly.",
-    verify: [
-      "Monitoring included",
-      "Repair coverage + exclusions",
-      "How to request service"
-    ]
-  },
-  {
-    tag: "Insurance",
-    q: "Do I need different homeowner’s insurance?",
-    say: "Sometimes the provider covers the equipment.\nWe’ll confirm if your policy needs any updates.",
-    why: "People worry about surprise insurance requirements. Calm, contract-based answer wins.",
-    verify: [
-      "Insurance responsibility section",
-      "Damage responsibility (weather, accidents)",
-      "Any homeowner obligations"
-    ]
-  },
-  {
-    tag: "Fees",
-    q: "Are there hidden fees or penalties?",
-    say: "We’ll review fees in writing.\nMost concerns are transfer fees, late fees, or early termination terms.",
-    why: "If you bring this up first, you look honest and eliminate the “gotcha” fear.",
-    verify: [
-      "All fees/penalties section",
-      "Transfer fees (if any)",
-      "Early termination language"
-    ]
-  },
-  {
-    tag: "NEM 3.0",
-    q: "Why do batteries come up so much now?",
-    say: "Extra solar sent to the grid is worth less than it used to be.\nBatteries help you use more solar during expensive hours.",
-    why: "This answers ‘why battery?’ in one clean concept: control expensive time.",
-    verify: [
-      "Battery included or optional",
-      "Backup vs self-consumption settings",
-      "Battery warranty/coverage terms"
+      "Roof condition requirements / inspection notes",
+      "Remove/reinstall terms + any costs",
+      "Leak responsibility language"
     ]
   },
   {
     tag: "Outages",
-    q: "If the power goes out, will solar still work?",
-    say: "Most grid-tied solar shuts off during outages for safety.\nWith a battery and proper setup, selected circuits can stay on.",
-    why: "This prevents the biggest outage misconception and builds credibility.",
+    q: "Will the battery keep me on during outages?",
+    say: "Yes, with the right backup setup.\nThe battery can power selected circuits when the grid goes down.\nWe’ll confirm what loads are included.",
+    why: "Outage protection is emotional. ‘Selected circuits’ keeps expectations honest and strong.",
     verify: [
-      "Backup equipment included",
+      "Backup capability included (not just storage)",
       "Which circuits/loads are backed up",
-      "Any backup subpanel scope"
+      "Any backup panel / equipment included"
     ]
   },
   {
-    tag: "Performance",
-    q: "What if the system doesn’t produce what you projected?",
-    say: "We’ll review what the contract says about under-production.\nNever rely on verbal promises—only written terms.",
-    why: "Production concerns drive cancellations. Contract-first language protects everyone.",
+    tag: "Timeline",
+    q: "How long does it take and what’s the process?",
+    say: "It’s simple:\n1) quick eligibility check\n2) site survey\n3) permits\n4) install\n5) inspection + PTO.\nWe guide the whole thing.",
+    why: "A clear timeline reduces anxiety and makes you look organized and legit.",
     verify: [
-      "Any production guarantee/remedy language",
-      "How production is measured and over what timeframe",
-      "Exclusions (shade growth, weather, etc.)"
+      "Who handles permits + interconnection",
+      "Estimated timeline language (if provided)",
+      "What happens if HOA/city requires changes"
     ]
   },
   {
-    tag: "Trust",
-    q: "How do I know this company is legit?",
-    say: "We verify licensing and who is responsible for install and service.\nAnd we make sure the contract matches what we discussed.",
-    why: "Homeowners have seen shady reps. Verification turns you into the safe guide.",
+    tag: "Legit Check",
+    q: "How do I know the installer is legit?",
+    say: "You should verify it.\nWe’ll provide the license info and who is responsible for install and service.\nNo guessing—everything documented.",
+    why: "Inviting verification makes you trustworthy and filters out fear-based objections.",
     verify: [
-      "Installer/contractor identity + license info",
-      "Who services the system (provider vs subcontractor)",
-      "Paperwork names match your proposal"
+      "Contractor/installer identity + license info",
+      "Who provides service (provider vs subcontractor)",
+      "Contact/service process in writing"
     ]
   },
   {
     tag: "Decision",
-    q: "What’s the simplest way to decide if this is right?",
-    say: "If it lowers your cost per kWh today,\nkeeps terms clear for the future,\nand fits your home plans—then it makes sense.",
-    why: "People need a calm framework. This reduces pressure and increases close rate.",
+    q: "What’s the simple way to decide if this is worth it?",
+    say: "If it lowers your cost per kWh,\nkeeps you protected with long-term coverage,\nand transfers cleanly if you move—then it’s a win.",
+    why: "Homeowners want permission to decide. This is a calm ‘yes/no’ filter that closes well.",
     verify: [
-      "Day-one savings expectation",
-      "Escalator choice",
-      "Home sale plan (transfer vs buyout)"
+      "kWh rate and expected savings assumptions",
+      "Warranty/coverage term and what it includes",
+      "Transfer clause and any conditions"
     ]
   }
 ];
@@ -806,8 +711,8 @@ window.addEventListener("keydown", (e)=>{
    ========================= */
 document.getElementById("helpBtn").onclick = ()=>{
   openSheet(
-    "How to use Learn Mode",
-    "Use this like iPhone onboarding:\n\n• Read the “Say this” out loud.\n• Tap “Why” only if you need the reason.\n• Tap “Verify” only when reviewing the contract.\n\nSwipe left/right to move.\n\nPro tip: Run the deck twice before the sit.",
+    "How to use this at the door",
+    "Use this like iPhone onboarding:\n\n• Read “Say this” out loud.\n• Tap “Why this works” if you need confidence.\n• Tap “Verify in contract” when they ask ‘but what if…’\n\nPro tip:\nIf they want details, set an appointment and review contract line-by-line.",
     { q:"", tag:"Help" }
   );
 };
