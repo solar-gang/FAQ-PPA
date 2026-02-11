@@ -1,41 +1,38 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>CA Solar PPA FAQ • Rep Playbook</title>
-  <meta name="theme-color" content="#0b1017" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+  <title>CA Solar PPA • Learn Mode</title>
+  <meta name="theme-color" content="#0b1017"/>
 
   <style>
     :root{
       --navy:#0b1017;
       --navy2:#06122a;
-      --card:#0f1724;
-      --card2:#0c1420;
 
       --gold:#FBC909;
       --teal:#3AADBB;
       --lime:#86f7a6;
 
       --text:rgba(255,255,255,.94);
-      --muted:rgba(255,255,255,.72);
+      --muted:rgba(255,255,255,.70);
       --muted2:rgba(255,255,255,.56);
 
-      --danger:#ff4d4d;
-      --ok:#34c759;
+      --stroke: rgba(255,255,255,.10);
+      --shadow: 0 18px 70px rgba(0,0,0,.45);
 
       --r:18px;
-      --r2:24px;
-      --shadow: 0 18px 70px rgba(0,0,0,.45);
-      --stroke: rgba(255,255,255,.10);
+      --r2:28px;
 
       --safeT: env(safe-area-inset-top);
       --safeB: env(safe-area-inset-bottom);
       --safeL: env(safe-area-inset-left);
       --safeR: env(safe-area-inset-right);
 
-      --grad: linear-gradient(135deg, var(--gold), var(--teal));
-      --grad2: linear-gradient(135deg, rgba(251,201,9,.20), rgba(58,173,187,.18));
+      --grad: linear-gradient(135deg, rgba(251,201,9,.22), rgba(58,173,187,.18));
+      --glass: rgba(15,23,36,.62);
+      --glass2: rgba(0,0,0,.18);
     }
 
     *{ box-sizing:border-box; }
@@ -47,315 +44,355 @@
         radial-gradient(1100px 700px at 20% -10%, rgba(251,201,9,.18), transparent 60%),
         radial-gradient(900px 600px at 110% 10%, rgba(58,173,187,.18), transparent 55%),
         linear-gradient(180deg, var(--navy), var(--navy2));
-      color:var(--text);
-      padding: calc(14px + var(--safeT)) calc(14px + var(--safeR)) calc(18px + var(--safeB)) calc(14px + var(--safeL));
+      color: var(--text);
+      padding: calc(14px + var(--safeT)) calc(14px + var(--safeR)) calc(16px + var(--safeB)) calc(14px + var(--safeL));
     }
 
-    a{ color:inherit; text-decoration:none; }
-    .wrap{ max-width: 980px; margin:0 auto; }
+    .wrap{ max-width: 980px; margin: 0 auto; }
 
-    /* Header */
+    /* Top Bar */
     header{
       display:flex;
       align-items:center;
+      justify-content:space-between;
       gap:12px;
-      padding:14px 14px;
+      padding: 12px 12px;
       border:1px solid var(--stroke);
       border-radius: var(--r2);
       background: rgba(15,23,36,.55);
       backdrop-filter: blur(10px);
       box-shadow: var(--shadow);
     }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width:0;
+    }
     .logo{
-      width:44px; height:44px;
-      border-radius: 12px;
-      background: rgba(255,255,255,.06);
+      width:42px; height:42px;
+      border-radius: 14px;
       border:1px solid var(--stroke);
-      display:grid; place-items:center;
+      background: rgba(255,255,255,.06);
       overflow:hidden;
+      display:grid; place-items:center;
       flex:0 0 auto;
     }
     .logo img{ width:100%; height:100%; object-fit:cover; }
-    .hgroup{ flex:1; min-width:0; }
-    h1{
+    .titleWrap{ min-width:0; }
+    .appTitle{
       margin:0;
-      font-size: 18px;
+      font-size: 15px;
       letter-spacing: .2px;
-      line-height: 1.2;
+      line-height: 1.15;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
-    .sub{
-      margin:6px 0 0 0;
+    .appSub{
+      margin: 5px 0 0 0;
+      font-size: 12px;
       color: var(--muted);
-      font-size: 13px;
-      line-height: 1.35;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
-    .badge{
+
+    .right{
+      display:flex;
+      align-items:center;
+      gap:8px;
       flex:0 0 auto;
+    }
+    .pill{
       font-size:12px;
-      padding:8px 10px;
+      padding: 8px 10px;
       border-radius: 999px;
       border:1px solid var(--stroke);
       background: rgba(255,255,255,.06);
       color: var(--muted);
-      white-space: nowrap;
+      white-space:nowrap;
     }
-    .badge b{
-      background: var(--grad);
-      -webkit-background-clip: text;
+    .pill b{
+      background: linear-gradient(135deg, var(--gold), var(--teal));
+      -webkit-background-clip:text;
       background-clip:text;
       color: transparent;
     }
-
-    /* Controls */
-    .controls{
-      margin-top: 14px;
-      display:grid;
-      gap:10px;
-    }
-    .search{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      padding: 12px 12px;
-      border-radius: var(--r);
+    .iconBtn{
+      width:40px; height:40px;
+      border-radius: 14px;
       border:1px solid var(--stroke);
       background: rgba(255,255,255,.06);
-    }
-    .search input{
-      width:100%;
-      background: transparent;
-      border:none;
-      outline:none;
-      color: var(--text);
-      font-size: 15px;
-    }
-    .search .k{
-      font-size: 12px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border:1px solid var(--stroke);
-      background: rgba(0,0,0,.20);
-      color: var(--muted2);
-      white-space:nowrap;
-    }
-
-    .chips{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-    }
-    .chip{
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.06);
-      color: var(--muted);
-      padding: 9px 10px;
-      border-radius: 999px;
-      font-size: 13px;
+      color: rgba(255,255,255,.88);
       cursor:pointer;
-      user-select:none;
-      transition: transform .08s ease, background .2s ease, border-color .2s ease;
-    }
-    .chip:active{ transform: scale(.98); }
-    .chip.on{
-      color: rgba(255,255,255,.96);
-      border-color: rgba(251,201,9,.35);
-      background: var(--grad2);
-    }
-
-    /* Layout */
-    .grid{
-      margin-top: 14px;
       display:grid;
-      gap: 12px;
-      grid-template-columns: 1fr;
+      place-items:center;
+      user-select:none;
     }
+    .iconBtn:active{ transform: scale(.98); }
 
-    .panel{
-      border:1px solid var(--stroke);
+    /* Learn Card */
+    .stage{
+      margin-top: 14px;
       border-radius: var(--r2);
+      border:1px solid var(--stroke);
       background: rgba(15,23,36,.55);
       backdrop-filter: blur(10px);
       box-shadow: var(--shadow);
       overflow:hidden;
+      position:relative;
     }
-    .panel .phead{
-      padding: 14px 14px 10px 14px;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:10px;
-    }
-    .ptitle{
-      margin:0;
-      font-size: 14px;
-      letter-spacing: .2px;
-      color: rgba(255,255,255,.90);
-    }
-    .pmeta{
-      margin:6px 0 0 0;
-      font-size: 12px;
-      color: var(--muted);
-      line-height: 1.35;
-    }
-    .pbody{ padding: 10px 14px 14px 14px; }
 
-    .callout{
-      border-radius: var(--r);
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
-      padding: 12px;
-    }
-    .callout .row{
+    .card{
+      min-height: calc(88vh - 70px);
+      padding: 22px 18px;
       display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap: 18px;
+      touch-action: pan-y;
+      user-select:none;
+    }
+
+    .topRow{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
       gap:10px;
-      align-items:flex-start;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .progress{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      white-space:nowrap;
+    }
+    .dots{
+      display:flex;
+      gap:6px;
+      align-items:center;
     }
     .dot{
-      width:10px; height:10px; margin-top:5px;
-      border-radius: 999px;
-      background: var(--gold);
-      box-shadow: 0 0 0 4px rgba(251,201,9,.14);
-      flex:0 0 auto;
+      width:7px;height:7px;border-radius:999px;
+      background: rgba(255,255,255,.18);
+      border:1px solid rgba(255,255,255,.10);
     }
-    .callout b{ color: rgba(255,255,255,.92); }
-    .callout p{
-      margin: 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.4;
+    .dot.on{
+      background: rgba(251,201,9,.90);
+      border-color: rgba(251,201,9,.35);
+      box-shadow: 0 0 0 4px rgba(251,201,9,.12);
     }
 
-    /* FAQ */
-    .faq{ padding: 6px 10px 14px 10px; }
-    .item{
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      border-radius: var(--r);
-      margin-top:10px;
-      overflow:hidden;
-    }
-    .q{
-      width:100%;
-      text-align:left;
-      padding: 12px 12px;
-      cursor:pointer;
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      align-items:flex-start;
-      background: transparent;
-      border:none;
-      color: var(--text);
-      font-size: 15px;
+    .qTitle{
+      font-size: 26px;
       line-height: 1.25;
+      text-align:center;
+      margin: 0;
+      letter-spacing: .2px;
+      padding: 0 6px;
     }
-    .q small{
-      display:block;
-      margin-top:6px;
-      color: var(--muted2);
-      font-size: 12px;
-      line-height:1.35;
-    }
-    .caret{
-      flex:0 0 auto;
-      width: 34px; height: 34px;
-      border-radius: 999px;
-      display:grid; place-items:center;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.18);
-      color: rgba(255,255,255,.78);
-      transition: transform .2s ease;
-      margin-top: 2px;
-    }
-    .item.open .caret{ transform: rotate(180deg); }
-
-    .a{
-      display:none;
-      padding: 0 12px 12px 12px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.5;
-    }
-    .item.open .a{ display:block; }
-
-    .pillrow{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin: 10px 0 8px 0;
-    }
-    .pill{
-      font-size: 12px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.18);
-      color: var(--muted2);
-    }
-    .pill.good{ border-color: rgba(52,199,89,.28); color: rgba(200,255,220,.88); }
-    .pill.warn{ border-color: rgba(251,201,9,.30); color: rgba(255,240,190,.92); }
-    .pill.bad{ border-color: rgba(255,77,77,.35); color: rgba(255,200,200,.92); }
-
-    .block{
-      margin-top:10px;
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
-      padding: 10px;
-    }
-    .label{
-      font-size: 11px;
-      letter-spacing: .3px;
-      text-transform: uppercase;
-      color: var(--muted2);
-      margin: 0 0 6px 0;
-    }
-    .block p{ margin:0; }
 
     .say{
-      border-left: 3px solid rgba(58,173,187,.65);
-      padding-left: 10px;
-      color: rgba(225,250,255,.86);
+      border-radius: 24px;
+      padding: 18px 16px;
+      border:1px solid rgba(251,201,9,.22);
+      background: linear-gradient(135deg, rgba(251,201,9,.22), rgba(251,201,9,.06));
     }
-
-    footer{
-      margin-top: 14px;
-      color: var(--muted2);
+    .label{
       font-size: 12px;
-      line-height: 1.45;
-      padding: 10px 2px;
-      opacity: .95;
+      letter-spacing: .4px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.74);
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .label .chipDot{
+      width:10px;height:10px;border-radius:999px;
+      background: rgba(251,201,9,.95);
+      box-shadow: 0 0 0 4px rgba(251,201,9,.12);
+    }
+    .say p{
+      margin: 10px 0 0 0;
+      font-size: 19px;
+      line-height: 1.6;
+      color: rgba(255,255,255,.94);
     }
 
-    .btnRow{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top: 10px;
+    .actions{
+      display:grid;
+      gap: 10px;
     }
     .btn{
-      display:inline-flex;
+      width:100%;
+      padding: 16px 14px;
+      font-size: 17px;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.92);
+      cursor:pointer;
+      text-align:left;
+      display:flex;
       align-items:center;
-      justify-content:center;
-      gap:8px;
-      padding: 10px 12px;
-      border-radius: 14px;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .btn:active{ transform: scale(.99); }
+    .btn .hint{
+      font-size: 13px;
+      color: var(--muted2);
+    }
+    .btn.teal{
+      border-color: rgba(58,173,187,.22);
+      background: linear-gradient(135deg, rgba(58,173,187,.18), rgba(58,173,187,.06));
+    }
+    .btn.gray{
+      background: rgba(0,0,0,.18);
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding-top: 6px;
+    }
+    .navBtn{
+      flex:1;
+      padding: 14px 12px;
+      border-radius: 18px;
       border:1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.06);
       color: rgba(255,255,255,.90);
-      font-size: 13px;
       cursor:pointer;
+      font-size: 16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
       user-select:none;
     }
-    .btn.primary{
-      border-color: rgba(251,201,9,.28);
-      background: var(--grad2);
+    .navBtn.primary{
+      border-color: rgba(251,201,9,.22);
+      background: var(--grad);
+      color: rgba(255,255,255,.96);
+      font-weight: 650;
+    }
+    .navBtn:disabled{
+      opacity: .45;
+      cursor:not-allowed;
     }
 
-    @media (min-width: 920px){
-      .controls{ grid-template-columns: 1.2fr .8fr; align-items:start; }
-      .chips{ justify-content:flex-end; }
+    .footerHint{
+      text-align:center;
+      color: var(--muted2);
+      font-size: 12px;
+      line-height: 1.35;
+      padding: 10px 14px 14px 14px;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+
+    /* Slide animation */
+    .animOutLeft{ animation: outLeft .18s ease both; }
+    .animInRight{ animation: inRight .20s ease both; }
+    .animOutRight{ animation: outRight .18s ease both; }
+    .animInLeft{ animation: inLeft .20s ease both; }
+
+    @keyframes outLeft{ to{ transform: translateX(-18px); opacity:.0; } }
+    @keyframes inRight{ from{ transform: translateX(18px); opacity:.0; } to{ transform: translateX(0); opacity:1; } }
+    @keyframes outRight{ to{ transform: translateX(18px); opacity:.0; } }
+    @keyframes inLeft{ from{ transform: translateX(-18px); opacity:.0; } to{ transform: translateX(0); opacity:1; } }
+
+    /* Bottom Sheet */
+    .sheetBack{
+      position:fixed;
+      inset:0;
+      background: rgba(0,0,0,.45);
+      display:none;
+      align-items:flex-end;
+      justify-content:center;
+      padding: 14px;
+      z-index:50;
+    }
+    .sheet{
+      width: min(980px, 100%);
+      border-radius: 26px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(15,23,36,.86);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      transform: translateY(12px);
+      opacity: 0;
+      transition: transform .18s ease, opacity .18s ease;
+    }
+    .sheetBack.show{ display:flex; }
+    .sheetBack.show .sheet{
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .sheetHead{
+      padding: 14px 14px 10px 14px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
+    .sheetTitle{
+      margin:0;
+      font-size: 16px;
+      letter-spacing:.2px;
+    }
+    .sheetClose{
+      width:40px;height:40px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.92);
+      cursor:pointer;
+      display:grid; place-items:center;
+      user-select:none;
+      flex:0 0 auto;
+    }
+    .sheetBody{
+      padding: 12px 14px 16px 14px;
+      color: rgba(255,255,255,.86);
+      line-height: 1.55;
+      font-size: 16px;
+    }
+    .bullets{
+      margin: 10px 0 0 0;
+      padding-left: 18px;
+      color: rgba(255,255,255,.84);
+    }
+    .bullets li{ margin: 8px 0; }
+    .tagRow{
+      padding: 10px 14px 14px 14px;
+      border-top: 1px solid rgba(255,255,255,.10);
+      color: var(--muted2);
+      font-size: 12px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    /* Tiny helper */
+    .kbd{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width: 22px;
+      padding: 2px 7px;
+      border-radius: 10px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.20);
+      color: rgba(255,255,255,.72);
+      font-size: 12px;
     }
   </style>
 </head>
@@ -364,575 +401,399 @@
 <div class="wrap">
 
   <header>
-    <div class="logo" title="L.O.S.">
-      <!-- Replace los-logo.png with your logo filename -->
-      <img src="los-logo.png" alt="LOS Logo" onerror="this.style.display='none'; this.parentElement.textContent='LOS'; this.parentElement.style.color='rgba(255,255,255,.85)'; this.parentElement.style.fontWeight='700';" />
+    <div class="brand">
+      <div class="logo" title="L.O.S.">
+        <img src="los-logo.png" alt="LOS Logo"
+          onerror="this.style.display='none'; this.parentElement.textContent='LOS'; this.parentElement.style.fontWeight='800'; this.parentElement.style.color='rgba(255,255,255,.9)';">
+      </div>
+      <div class="titleWrap">
+        <p class="appTitle">CA Solar PPA • Learn Mode</p>
+        <p class="appSub">Swipe to learn • Tap to reveal why/verify</p>
+      </div>
     </div>
 
-    <div class="hgroup">
-      <h1>California Solar PPA FAQ • Rep Playbook</h1>
-      <p class="sub">
-        Built for quick, confident explanations: <b>what it means</b>, <b>why it matters</b>, and <b>what to verify</b> in the agreement.
-      </p>
+    <div class="right">
+      <div class="pill"><b>Apple</b> style</div>
+      <button class="iconBtn" id="helpBtn" title="Help">?</button>
     </div>
-
-    <div class="badge"><b>Dark</b> • LOS Theme</div>
   </header>
 
-  <div class="controls">
-    <div class="search">
-      <span style="opacity:.85">🔎</span>
-      <input id="search" placeholder="Search FAQs (ex: escalator, buyout, roof, selling home, warranty, NEM 3.0)"/>
-      <span class="k">Tip: type “sell”</span>
+  <section class="stage">
+    <div class="card" id="card">
+      <!-- Injected by JS -->
     </div>
+    <div class="footerHint">
+      Swipe <span class="kbd">←</span> <span class="kbd">→</span> to move • Tap “Why this works” + “Verify in contract” when needed.
+    </div>
+  </section>
+</div>
 
-    <div class="chips" id="chips">
-      <div class="chip on" data-tag="all">All</div>
-      <div class="chip" data-tag="basics">Basics</div>
-      <div class="chip" data-tag="money">Price & Escalator</div>
-      <div class="chip" data-tag="contract">Contract Terms</div>
-      <div class="chip" data-tag="home">Home Sale & Roof</div>
-      <div class="chip" data-tag="ops">Maintenance</div>
-      <div class="chip" data-tag="nem">NEM 3.0 / Battery</div>
-      <div class="chip" data-tag="trust">Trust & Safety</div>
+<!-- Bottom Sheet -->
+<div class="sheetBack" id="sheetBack" aria-hidden="true">
+  <div class="sheet" role="dialog" aria-modal="true">
+    <div class="sheetHead">
+      <div>
+        <h3 class="sheetTitle" id="sheetTitle">Title</h3>
+        <div style="margin-top:6px;color:var(--muted);font-size:12px" id="sheetSub"></div>
+      </div>
+      <button class="sheetClose" id="sheetClose" aria-label="Close">✕</button>
+    </div>
+    <div class="sheetBody" id="sheetBody"></div>
+    <div class="tagRow" id="sheetTagRow">
+      <span id="sheetTagLeft"></span>
+      <span id="sheetTagRight"></span>
     </div>
   </div>
-
-  <div class="grid">
-
-    <section class="panel">
-      <div class="phead">
-        <div>
-          <h2 class="ptitle">How to use this with a homeowner</h2>
-          <p class="pmeta">3 steps your rep can follow without sounding “salesy.”</p>
-        </div>
-      </div>
-      <div class="pbody">
-        <div class="callout">
-          <div class="row">
-            <div class="dot"></div>
-            <div>
-              <p><b>1) Define it in one sentence.</b> “A PPA means you buy the <u>power</u> the panels make at an agreed rate; the solar company owns/maintains the system.”</p>
-            </div>
-          </div>
-        </div>
-
-        <div style="height:10px"></div>
-
-        <div class="callout">
-          <div class="row">
-            <div class="dot" style="background:var(--teal); box-shadow:0 0 0 4px rgba(58,173,187,.14)"></div>
-            <div>
-              <p><b>2) Confirm the 3 “big rocks.”</b> Price per kWh (and escalator), term/buyout options, and what happens when they sell the home.</p>
-            </div>
-          </div>
-        </div>
-
-        <div style="height:10px"></div>
-
-        <div class="callout">
-          <div class="row">
-            <div class="dot" style="background:var(--lime); box-shadow:0 0 0 4px rgba(134,247,166,.12)"></div>
-            <div>
-              <p><b>3) Verify in writing.</b> Everything that affects money must be in the agreement: escalator, production guarantee language, fees, transfer steps, and buyout schedule.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="btnRow">
-          <button class="btn primary" id="expandAll">Expand all</button>
-          <button class="btn" id="collapseAll">Collapse</button>
-          <button class="btn" id="clearSearch">Clear search</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="panel">
-      <div class="phead">
-        <div>
-          <h2 class="ptitle">Red flags (quick filter)</h2>
-          <p class="pmeta">These are the ones that create complaints, cancellations, and bad reviews.</p>
-        </div>
-      </div>
-      <div class="pbody">
-        <div class="pillrow">
-          <span class="pill bad">No written escalator details</span>
-          <span class="pill bad">“Free solar” language</span>
-          <span class="pill warn">No clear transfer process</span>
-          <span class="pill warn">No clarity on roof work</span>
-          <span class="pill warn">Fees not disclosed</span>
-          <span class="pill bad">Verbal promises only</span>
-        </div>
-        <div class="callout">
-          <p>
-            Your job is to be the “clarity rep.” If a homeowner feels confused, they assume they’re being tricked.
-            Clear, slow, and contract-backed wins.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="panel">
-      <div class="phead">
-        <div>
-          <h2 class="ptitle">FAQs (tap to expand)</h2>
-          <p class="pmeta">Each includes: <b>Client answer</b> → <b>Why it matters</b> → <b>Verify</b>.</p>
-        </div>
-        <div class="badge" id="countBadge">0 shown</div>
-      </div>
-
-      <div class="faq" id="faq">
-
-        <!-- BASICS -->
-        <div class="item" data-tags="basics contract">
-          <button class="q">
-            <div>
-              What is a PPA (Power Purchase Agreement) in simple terms?
-              <small>Short definition you can say at the door or at the table.</small>
-            </div>
-            <div class="caret">⌄</div>
-          </button>
-          <div class="a">
-            <div class="pillrow">
-              <span class="pill good">Client clarity</span>
-              <span class="pill warn">Avoid “ownership confusion”</span>
-            </div>
-
-            <div class="block">
-              <div class="label">Client answer</div>
-              <p class="say">“You’re not buying panels — you’re buying the electricity they produce at a set rate. The solar company owns the equipment and handles monitoring/repairs.”</p>
-            </div>
-
-            <div class="block">
-              <div class="label">Why this matters (rep reason)</div>
-              <p>Most objections come from misunderstandings: “Do I own it?” “Is there a loan?” Define it cleanly so they can compare options honestly.</p>
-            </div>
-
-            <div class="block">
-              <div class="label">Verify in the agreement</div>
-              <p>Who owns the system, what you pay for (kWh produced), and what’s included (monitoring, maintenance, insurance responsibilities).</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="item" data-tags="basics money">
-          <button class="q">
-            <div>
-              How do I pay on a PPA — is it a fixed bill?
-              <small>Common confusion: “Is it like a loan payment?”</small>
-            </div>
-            <div class="caret">⌄</div>
-          </button>
-          <div class="a">
-            <div class="block">
-              <div class="label">Client answer</div>
-              <p class="say">“You pay for the energy the system produces (kWh) at the PPA rate. Some months can be lower/higher depending on production and season.”</p>
-            </div>
-            <div class="block">
-              <div class="label">Why this matters</div>
-              <p>If they expect a perfectly fixed payment and summer production swings, they feel “baited.” Set expectations: seasonal production changes are normal.</p>
-            </div>
-            <div class="block">
-              <div class="label">Verify</div>
-              <p>Billing method (kWh produced), true-up/annual reconciliation language (if any), and whether there’s a minimum monthly charge.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- MONEY / ESCALATOR -->
-        <div class="item" data-tags="money contract">
-          <button class="q">
-            <div>
-              What is an escalator — and should I choose 0% or an escalator?
-              <small>This is one of the most important “money questions.”</small>
-            </div>
-            <div class="caret">⌄</div>
-          </button>
-          <div class="a">
-            <div class="pillrow">
-              <span class="pill warn">Big decision</span>
-              <span class="pill warn">Long-term math</span>
-            </div>
-
-            <div class="block">
-              <div class="label">Client answer</div>
-              <p class="say">“An escalator is the annual increase on your solar kWh price (example: 2.9%/yr). A 0% option costs more today but stays flatter long-term.”</p>
-            </div>
-
-            <div class="block">
-              <div class="label">Why this matters</div>
-              <p>Homeowners don’t care about “good or bad,” they care about: (1) savings now, (2) savings later, (3) home sale flexibility. Escalator affects all three.</p>
-            </div>
-
-            <div class="block">
-              <div class="label">Verify</div>
-              <p>Exact escalator %, when it starts, whether it applies to all kWh, and any caps. Must be written clearly.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="item" data-tags="money">
-          <button class="q">
-            <div>
-              How do I compare a PPA price to Edison’s rate?
-              <small>Keep it simple: compare price per kWh and expected usage coverage.</small>
-            </div>
-            <div class="caret">⌄</div>
-          </button>
-          <div class="a">
-            <div class="block">
-              <div class="label">Client answer</div>
-              <p class="say">“We compare your effective utility cost per kWh vs the PPA kWh price. If the PPA is lower and sized right, you save — especially during peak pricing.”</p>
-            </div>
-            <div class="block">
-              <div class="label">Why this matters</div>
-              <p>Clients get lost in monthly totals. Bring them back to: “What do you pay per kWh today, and what will you pay per kWh on solar?”</p>
-            </div>
-            <div class="block">
-              <div class="label">Verify</div>
-              <p>PPA kWh rate (starting price), escalator, and what utility charges remain (minimum charges, non-bypassable charges, etc.).</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- CONTRACT -->
-        <div class="item" data-tags="contract trust">
-          <button class="q">
-            <div>
-              What are the typical term lengths and what happens at the end?
-              <small>20–25 years is common. End-of-term options must be clear.</small>
-            </div>
-            <div class="caret">⌄</div>
-          </button>
-          <div class="a">
-            <div class="block">
-              <div class="label">Client answer</div>
-              <p class="say">“Most PPAs are long-term. At the end, there’s usually an option to renew, remove the system, or buy it — depending on the agreement.”</p>
-            </div>
-            <div class="block">
-              <div class="label">Why this matters</div>
-              <p>If end-of-term isn’t clear, they fear being “stuck forever.” Clarity reduces cancellations.</p>
-            </div>
-            <div class="block">
-              <div class="label">Verify</div>
-              <p>Term length, renewal language, removal responsibilities, and end-of-term buyout options (if any).</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="item" data-tags="contract money home">
-          <button class="q">
-            <div>
-              Is there a buyout option? How is the buyout price determined?
-              <small>Homeowners ask this when they might sell later.</small>
-            </div>
-            <div class="caret">⌄</div>
-          </button>
-          <div class="a">
-            <div class="block">
-              <div class="label">Client answer</div>
-              <p class="say">“Many PPAs include a buyout option at certain years. The price is typically based on a schedule or fair market value terms — it must be written.”</p>
-            </div>
-            <div class="block">
-              <div class="label">Why this matters</div>
-              <p>Buyout clarity = homeowner feels in control. No clarity = “I can’t ever get out.”</p>
-            </div>
-            <div class="block">
-              <div class="label">Verify</div>
-              <p>Buyout timing windows, method (schedule vs FMV), and any admin/transaction fees.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- HOME SALE / ROOF -->
-        <div class="item" data-tags="home contract trust">
-          <button class="q">
-            <div>
-              What happens if I sell my home?
-              <small>Top fear: “This will ruin escrow.”</small>
-            </div>
-            <div class="caret">⌄</div>
-          </button>
-          <div class="a">
-            <div class="pillrow">
-              <span class="pill warn">Most common anxiety</span>
-              <span class="pill good">Solve with process</span>
-            </div>
-            <div class="block">
-              <div class="label">Client answer</div>
-              <p class="say">“You typically transfer the agreement to the buyer (subject to approval). Some homeowners choose to buy it out instead — depends on the contract.”</p>
-            </div>
-            <div class="block">
-              <div class="label">Why this matters</div>
-              <p>They’re imagining the worst. Your job is to replace fear with a step-by-step process (transfer vs buyout) and set expectations early.</p>
-            </div>
-            <div class="block">
-              <div class="label">Verify</div>
-              <p>Transfer requirements, buyer qualification, timelines, any transfer fees, and what happens if a buyer refuses.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="item" data-tags="home ops">
-          <button class="q">
-            <div>
-              Who pays if the roof needs repairs — and what if I need a reroof?
-              <small>Roof work is where deals go sideways if unclear.</small>
-            </div>
-            <div class="caret">⌄</div>
-          </button>
-          <div class="a">
-            <div class="block">
-              <div class="label">Client answer</div>
-              <p class="say">“It depends. Some roof issues are homeowner responsibility. If panels must be removed/reinstalled, the agreement should say who pays and how it’s scheduled.”</p>
-            </div>
-            <div class="block">
-              <div class="label">Why this matters</div>
-              <p>Roof questions are trust tests. If you’re vague, they assume hidden costs.</p>
-            </div>
-            <div class="block">
-              <div class="label">Verify</div>
-              <p>Roof warranty language, panel remove/reinstall terms, and any fees for truck rolls or reinstallation.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- OPS / MAINTENANCE -->
-        <div class="item" data-tags="ops basics">
-          <button class="q">
-            <div>
-              Who monitors and fixes the system if something breaks?
-              <small>This is a big advantage of PPA if explained correctly.</small>
-            </div>
-            <div class="caret">⌄</div>
-          </button>
-          <div class="a">
-            <div class="block">
-              <div class="label">Client answer</div>
-              <p class="say">“Typically the provider monitors production and covers repairs/maintenance. If production drops, they’re alerted and schedule service.”</p>
-            </div>
-            <div class="block">
-              <div class="label">Why this matters</div>
-              <p>Homeowners don’t want to “own a science project.” Reinforce that service is handled, then confirm what’s excluded.</p>
-            </div>
-            <div class="block">
-              <div class="label">Verify</div>
-              <p>Monitoring included, response times (if stated), exclusions (damage, roof leaks, homeowner-caused issues), and how to request service.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="item" data-tags="ops money">
-          <button class="q">
-            <div>
-              Is there a production guarantee? What if it under-produces?
-              <small>Don’t promise “guarantees” unless it’s written.</small>
-            </div>
-            <div class="caret">⌄</div>
-          </button>
-          <div class="a">
-            <div class="block">
-              <div class="label">Client answer</div>
-              <p class="say">“Some agreements include minimum production expectations or remedies. We’ll show you exactly what the contract says about under-production.”</p>
-            </div>
-            <div class="block">
-              <div class="label">Why this matters</div>
-              <p>Clients fear paying for “phantom savings.” This question shows you’re transparent and contract-driven.</p>
-            </div>
-            <div class="block">
-              <div class="label">Verify</div>
-              <p>Production guarantee terms (if any), measurement method, remedy (credit/payment), and exclusions (shade growth, weather anomalies).</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- NEM / BATTERY -->
-        <div class="item" data-tags="nem money">
-          <button class="q">
-            <div>
-              What is NEM 3.0 (Net Billing) and why do batteries matter more now?
-              <small>Simple explanation: exporting midday pays less; storing for evening is more valuable.</small>
-            </div>
-            <div class="caret">⌄</div>
-          </button>
-          <div class="a">
-            <div class="block">
-              <div class="label">Client answer</div>
-              <p class="say">“Under NEM 3.0, the credit for exporting extra solar is generally much lower than it used to be, so batteries help you use more of your own solar during peak hours.”</p>
-            </div>
-            <div class="block">
-              <div class="label">Why this matters</div>
-              <p>Clients ask “Why battery?” This is the cleanest reason: control your power during expensive hours instead of selling it cheap midday.</p>
-            </div>
-            <div class="block">
-              <div class="label">Verify</div>
-              <p>Whether the proposal includes a battery, how it’s dispatched (self-consumption vs backup), and whether backup is included or optional.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="item" data-tags="nem ops">
-          <button class="q">
-            <div>
-              If the power goes out, will solar still work?
-              <small>Common misconception: solar alone powers the home during outages.</small>
-            </div>
-            <div class="caret">⌄</div>
-          </button>
-          <div class="a">
-            <div class="block">
-              <div class="label">Client answer</div>
-              <p class="say">“Most grid-tied solar shuts off during an outage for safety. With a battery (and proper backup setup), you can keep selected circuits running.”</p>
-            </div>
-            <div class="block">
-              <div class="label">Why this matters</div>
-              <p>This is where trust is won or lost. Set the correct expectation early.</p>
-            </div>
-            <div class="block">
-              <div class="label">Verify</div>
-              <p>Whether backup is included, what loads are backed up, and whether a backup subpanel is part of the scope.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- TRUST / SAFETY -->
-        <div class="item" data-tags="trust contract">
-          <button class="q">
-            <div>
-              What should I verify about licensing, salespeople, and subcontractors?
-              <small>California consumer-protection question set.</small>
-            </div>
-            <div class="caret">⌄</div>
-          </button>
-          <div class="a">
-            <div class="block">
-              <div class="label">Client answer</div>
-              <p class="say">“You should verify the contractor license number and ask if any part is subcontracted. Everything should match the company installing and servicing your system.”</p>
-            </div>
-            <div class="block">
-              <div class="label">Why this matters</div>
-              <p>This protects the homeowner and protects you. It reduces scam vibes and builds confidence.</p>
-            </div>
-            <div class="block">
-              <div class="label">Verify</div>
-              <p>CSLB license, salesperson relationship to company, and subcontractor details if used.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="item" data-tags="trust money contract">
-          <button class="q">
-            <div>
-              Are there fees, liens, or penalties I should worry about?
-              <small>Make the “hidden stuff” visible up front.</small>
-            </div>
-            <div class="caret">⌄</div>
-          </button>
-          <div class="a">
-            <div class="block">
-              <div class="label">Client answer</div>
-              <p class="say">“We’ll review any fees in writing: late fees, transfer fees, buyout admin fees, and any early termination terms.”</p>
-            </div>
-            <div class="block">
-              <div class="label">Why this matters</div>
-              <p>Clients assume the worst. If you proactively bring it up, you become the trusted guide instead of a salesperson.</p>
-            </div>
-            <div class="block">
-              <div class="label">Verify</div>
-              <p>All fees/penalties section, early termination language, and any filing language stated in the agreement.</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-  </div>
-
-  <footer>
-    <b>Rep note:</b> Keep your explanations contract-based and homeowner-first. California has a consumer guide that encourages homeowners to verify licensing, terms, and key contract details—use that as your “why we review this.”<br/>
-    <span style="opacity:.85">LOS • Dark Theme • Built for iPhone, iPad, and laptop.</span>
-  </footer>
-
 </div>
 
 <script>
-  const $ = (s)=>document.querySelector(s);
-  const $$ = (s)=>Array.from(document.querySelectorAll(s));
+/* =========================
+   Learn Deck Data (edit here)
+   ========================= */
+const DECK = [
+  {
+    tag: "Basics",
+    q: "What is a Solar PPA?",
+    say: "You’re not buying panels.\nYou’re buying the power they produce at an agreed rate.",
+    why: "It removes the biggest confusion (ownership vs loan) so they can compare options clearly.",
+    verify: [
+      "System ownership (provider owns equipment)",
+      "Your starting kWh price",
+      "Escalator (0% or %/yr) in writing"
+    ]
+  },
+  {
+    tag: "Price",
+    q: "How do I pay on a PPA — is it a fixed bill?",
+    say: "You pay per kWh the system produces.\nSeasonal production changes, so monthly cost can vary.",
+    why: "It prevents “I thought it was fixed” frustration — and builds trust early.",
+    verify: [
+      "Billing method (kWh produced)",
+      "Any minimum charge language",
+      "How credits/true-up are handled (if applicable)"
+    ]
+  },
+  {
+    tag: "Escalator",
+    q: "What is an escalator (0% vs escalator)?",
+    say: "An escalator is the annual increase on your solar kWh price.\n0% costs more today but stays flatter long-term.",
+    why: "This is the money lever. Clarity here prevents regret later.",
+    verify: [
+      "Exact escalator % and when it starts",
+      "Does it apply to all kWh",
+      "Any cap (if stated)"
+    ]
+  },
+  {
+    tag: "Compare",
+    q: "How do we compare this to Edison?",
+    say: "We compare price per kWh.\nIf solar kWh is lower and sized right, you save—especially during expensive hours.",
+    why: "Monthly bills confuse people. kWh price makes it simple and fair.",
+    verify: [
+      "Solar kWh price + escalator",
+      "Utility charges that still remain",
+      "System size / expected production"
+    ]
+  },
+  {
+    tag: "Term",
+    q: "How long is the agreement and what happens at the end?",
+    say: "Most PPAs are long-term.\nAt the end, you typically renew, buy, or remove—based on the contract.",
+    why: "End-of-term uncertainty is a silent deal killer. Give them control with clarity.",
+    verify: [
+      "Term length",
+      "End-of-term options (renew/buy/remove)",
+      "Removal responsibilities"
+    ]
+  },
+  {
+    tag: "Buyout",
+    q: "Is there a buyout option?",
+    say: "Many PPAs have a buyout option at certain years.\nWe’ll show you the buyout rules in writing.",
+    why: "Buyout clarity = homeowner feels in control (especially if they may sell later).",
+    verify: [
+      "Buyout timing windows",
+      "Price method (schedule vs fair market value)",
+      "Any admin/transfer fees"
+    ]
+  },
+  {
+    tag: "Selling",
+    q: "What happens if I sell the home?",
+    say: "Typically you transfer the agreement to the buyer,\nor you may buy it out—depending on the contract.",
+    why: "This is the #1 anxiety. Replace fear with a clear process.",
+    verify: [
+      "Transfer requirements + approval",
+      "Transfer timeline + fees",
+      "What happens if buyer declines"
+    ]
+  },
+  {
+    tag: "Roof",
+    q: "What if the roof needs work later?",
+    say: "Roof repairs are usually homeowner responsibility.\nIf panels must be removed/reinstalled, the contract says who pays.",
+    why: "Roof questions are trust tests. Clear answers prevent cancellations.",
+    verify: [
+      "Remove/reinstall terms and fees",
+      "Roof leak responsibility language",
+      "How service is requested/scheduled"
+    ]
+  },
+  {
+    tag: "Service",
+    q: "Who monitors and fixes the system?",
+    say: "Usually the provider monitors production and covers repairs.\nIf performance drops, they schedule service.",
+    why: "This is a major PPA advantage—homeowner doesn’t manage maintenance.",
+    verify: [
+      "Monitoring included",
+      "Repair coverage + exclusions",
+      "Service request process"
+    ]
+  },
+  {
+    tag: "Performance",
+    q: "Is there a production guarantee?",
+    say: "Some agreements include minimum production expectations.\nWe’ll point to the exact contract language together.",
+    why: "Never promise guarantees verbally. Contract-backed clarity protects you and them.",
+    verify: [
+      "Any production guarantee/remedy language",
+      "Measurement method/timeframe",
+      "Exclusions (shade growth, weather, etc.)"
+    ]
+  },
+  {
+    tag: "NEM 3.0",
+    q: "Why do batteries matter more now (NEM 3.0)?",
+    say: "Exporting extra solar is worth less than it used to be.\nBatteries help you use more solar during expensive hours.",
+    why: "This explains battery value in one clean sentence: control expensive time.",
+    verify: [
+      "Battery included or optional",
+      "Backup vs self-consumption settings",
+      "What loads are backed up"
+    ]
+  },
+  {
+    tag: "Outages",
+    q: "Will solar work during a power outage?",
+    say: "Most grid-tied solar shuts off during outages for safety.\nWith a battery and proper setup, selected circuits can stay on.",
+    why: "Correct expectations = trust. This prevents the #1 outage misunderstanding.",
+    verify: [
+      "Backup equipment included",
+      "Critical loads / backed-up circuits list",
+      "Any backup subpanel scope"
+    ]
+  },
+  {
+    tag: "Trust",
+    q: "What should I verify to avoid scams?",
+    say: "Verify licensing, company roles, and everything that affects money in writing.\nWe review the contract together—line by line.",
+    why: "Transparency lowers resistance and makes you the trusted guide.",
+    verify: [
+      "CSLB license and installer identity",
+      "Fees/penalties section",
+      "Escalator + transfer + buyout terms"
+    ]
+  },
+  {
+    tag: "Close",
+    q: "What’s the simplest decision framework?",
+    say: "If it lowers your cost per kWh, protects you from rising rates,\nand the contract terms feel clear—then it’s a smart move.",
+    why: "People need permission to decide. This gives them a calm “yes/no” filter.",
+    verify: [
+      "Day-one savings expectation",
+      "Escalator choice",
+      "Home sale plan (transfer vs buyout)"
+    ]
+  }
+];
 
-  const faq = $("#faq");
-  const items = $$(".item");
-  const search = $("#search");
-  const chips = $$("#chips .chip");
-  const countBadge = $("#countBadge");
+/* =========================
+   Render
+   ========================= */
+const cardEl = document.getElementById("card");
+let idx = 0;
 
-  let activeTag = "all";
+function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
 
-  function setCount(){
-    const shown = items.filter(i => i.style.display !== "none").length;
-    countBadge.textContent = `${shown} shown`;
+function render(animInClass){
+  const item = DECK[idx];
+  const total = DECK.length;
+
+  const dots = Array.from({length: Math.min(total, 10)}, (_,i)=>i)
+    .map(i=>{
+      // If more than 10 slides, show "window" around idx
+      let base = 0;
+      if(total > 10){
+        base = clamp(idx - 4, 0, total - 10);
+      }
+      const real = (total > 10) ? (base + i) : i;
+      const on = (real === idx) ? "on" : "";
+      return `<span class="dot ${on}"></span>`;
+    }).join("");
+
+  const html = `
+    <div class="topRow">
+      <div class="progress">
+        <span><b style="color:rgba(255,255,255,.92)">Question ${idx+1}</b> of ${total}</span>
+        <span style="opacity:.65">•</span>
+        <span style="color:rgba(251,201,9,.92)">${item.tag}</span>
+      </div>
+      <div class="dots" aria-hidden="true">${dots}</div>
+    </div>
+
+    <h1 class="qTitle">${escapeHtml(item.q)}</h1>
+
+    <div class="say">
+      <div class="label"><span class="chipDot"></span> Say this</div>
+      <p>${escapeHtml(item.say).replace(/\n/g,"<br>")}</p>
+    </div>
+
+    <div class="actions">
+      <button class="btn teal" id="whyBtn">
+        <span>Why this works</span>
+        <span class="hint">tap ▸</span>
+      </button>
+      <button class="btn gray" id="verifyBtn">
+        <span>Verify in contract</span>
+        <span class="hint">tap ▸</span>
+      </button>
+    </div>
+
+    <div class="nav">
+      <button class="navBtn" id="backBtn" ${idx===0 ? "disabled" : ""}>◀ Back</button>
+      <button class="navBtn primary" id="nextBtn" ${idx===total-1 ? "disabled" : ""}>Next ▶</button>
+    </div>
+  `;
+
+  cardEl.className = "card";
+  if(animInClass) cardEl.classList.add(animInClass);
+  cardEl.innerHTML = html;
+
+  // Wire buttons
+  document.getElementById("whyBtn").onclick = ()=> openSheet("Why this works", item.why, item);
+  document.getElementById("verifyBtn").onclick = ()=> openSheet("Verify in contract", item.verify, item, true);
+
+  document.getElementById("backBtn").onclick = ()=> go(-1);
+  document.getElementById("nextBtn").onclick = ()=> go(1);
+}
+
+function go(delta){
+  const total = DECK.length;
+  const next = idx + delta;
+  if(next < 0 || next >= total) return;
+
+  // Animate out then in
+  const outClass = delta > 0 ? "animOutLeft" : "animOutRight";
+  const inClass  = delta > 0 ? "animInRight" : "animInLeft";
+
+  cardEl.classList.remove("animInRight","animInLeft","animOutLeft","animOutRight");
+  cardEl.classList.add(outClass);
+
+  setTimeout(()=>{
+    idx = next;
+    render(inClass);
+  }, 165);
+}
+
+/* =========================
+   Swipe (Pointer Events)
+   ========================= */
+let startX = 0, startY = 0, dragging = false;
+
+cardEl.addEventListener("pointerdown", (e)=>{
+  // Ignore if a sheet is open
+  if(document.getElementById("sheetBack").classList.contains("show")) return;
+  dragging = true;
+  startX = e.clientX;
+  startY = e.clientY;
+});
+
+cardEl.addEventListener("pointerup", (e)=>{
+  if(!dragging) return;
+  dragging = false;
+  const dx = e.clientX - startX;
+  const dy = e.clientY - startY;
+
+  // Only treat as swipe if mostly horizontal and passes threshold
+  if(Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.2){
+    if(dx < 0) go(1);   // swipe left -> next
+    else go(-1);        // swipe right -> back
+  }
+});
+
+/* =========================
+   Bottom Sheet
+   ========================= */
+const sheetBack = document.getElementById("sheetBack");
+const sheetTitle = document.getElementById("sheetTitle");
+const sheetSub = document.getElementById("sheetSub");
+const sheetBody = document.getElementById("sheetBody");
+const sheetClose = document.getElementById("sheetClose");
+const sheetTagLeft = document.getElementById("sheetTagLeft");
+const sheetTagRight = document.getElementById("sheetTagRight");
+
+function openSheet(title, content, item, isBullets=false){
+  sheetTitle.textContent = title;
+  sheetSub.textContent = item.q;
+
+  if(isBullets){
+    sheetBody.innerHTML = `
+      <ul class="bullets">
+        ${(content || []).map(x=> `<li>${escapeHtml(x)}</li>`).join("")}
+      </ul>
+    `;
+  } else {
+    sheetBody.innerHTML = `<div>${escapeHtml(content || "")}</div>`;
   }
 
-  function matchItem(item){
-    const qText = item.querySelector(".q").innerText.toLowerCase();
-    const aText = item.querySelector(".a").innerText.toLowerCase();
-    const hay = (qText + " " + aText);
-    const term = (search.value || "").trim().toLowerCase();
+  sheetTagLeft.textContent = `Category: ${item.tag}`;
+  sheetTagRight.textContent = `Swipe: next/prev`;
 
-    const tags = (item.getAttribute("data-tags") || "").split(/\s+/).filter(Boolean);
-    const tagOk = (activeTag === "all") ? true : tags.includes(activeTag);
+  sheetBack.classList.add("show");
+  sheetBack.setAttribute("aria-hidden","false");
+}
 
-    const termOk = term ? hay.includes(term) : true;
+function closeSheet(){
+  sheetBack.classList.remove("show");
+  sheetBack.setAttribute("aria-hidden","true");
+}
 
-    return tagOk && termOk;
-  }
+sheetClose.onclick = closeSheet;
+sheetBack.addEventListener("click", (e)=>{
+  if(e.target === sheetBack) closeSheet();
+});
+window.addEventListener("keydown", (e)=>{
+  if(e.key === "Escape") closeSheet();
+  if(sheetBack.classList.contains("show")) return;
+  if(e.key === "ArrowRight") go(1);
+  if(e.key === "ArrowLeft") go(-1);
+});
 
-  function applyFilters(){
-    items.forEach(item=>{
-      item.style.display = matchItem(item) ? "" : "none";
-    });
-    setCount();
-  }
+/* =========================
+   Help Button
+   ========================= */
+document.getElementById("helpBtn").onclick = ()=>{
+  openSheet(
+    "How to use Learn Mode",
+    "Use this like iPhone onboarding:\n\n• Read the “Say this” out loud.\n• Tap “Why” only if you need the reason.\n• Tap “Verify” only if you’re reviewing contract details.\n\nSwipe left/right to move through questions.\n\nPro tip: Reps should run this deck 1–2 times before knocking.",
+    { q:"", tag:"Help" }
+  );
+};
 
-  // Accordion behavior
-  items.forEach(item=>{
-    const btn = item.querySelector(".q");
-    btn.addEventListener("click", ()=>{
-      item.classList.toggle("open");
-    });
-  });
+/* =========================
+   Utils
+   ========================= */
+function escapeHtml(str){
+  return String(str ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
 
-  // Search
-  search.addEventListener("input", applyFilters);
-
-  // Chips
-  chips.forEach(ch=>{
-    ch.addEventListener("click", ()=>{
-      chips.forEach(x=>x.classList.remove("on"));
-      ch.classList.add("on");
-      activeTag = ch.getAttribute("data-tag");
-      applyFilters();
-    });
-  });
-
-  // Buttons
-  $("#expandAll").addEventListener("click", ()=>{
-    items.forEach(i=>{
-      if(i.style.display !== "none") i.classList.add("open");
-    });
-  });
-
-  $("#collapseAll").addEventListener("click", ()=>{
-    items.forEach(i=>i.classList.remove("open"));
-  });
-
-  $("#clearSearch").addEventListener("click", ()=>{
-    search.value = "";
-    applyFilters();
-  });
-
-  // Initial
-  applyFilters();
+/* Init */
+render();
 </script>
 </body>
 </html>
